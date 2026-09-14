@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toko Kita - Cupang High-Grade, PC Gaming & Klepon Lumer</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cyber: {
+                            bg: '#0a0d14',
+                            card: '#121824',
+                            border: '#1e293b',
+                            neon: '#00ffcc',
+                            cyan: '#06b6d4',
+                            purple: '#a855f7'
+                        },
+                        amberGold: {
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                        },
+                        emeraldGlow: {
+                            400: '#34d399',
+                            500: '#10b981',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        tech: ['"Orbitron"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            background-color: #0a0d14;
+            color: #f1f5f9;
+        }
+
+        .neon-border-cyan {
+            box-shadow: 0 0 15px rgba(6, 182, 212, 0.25);
+            border: 1px solid rgba(6, 182, 212, 0.4);
+        }
+
+        .neon-border-amber {
+            box-shadow: 0 0 15px rgba(245, 158, 11, 0.25);
+            border: 1px solid rgba(245, 158, 11, 0.4);
+        }
+
+        .cyber-glass {
+            background: rgba(18, 24, 36, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .cyber-glass-glow {
+            background: linear-gradient(135deg, rgba(18, 24, 36, 0.9) 0%, rgba(15, 23, 42, 0.95) 100%);
+            backdrop-filter: blur(12px);
+        }
+
+        .text-gradient-tech {
+            background: linear-gradient(135deg, #00ffcc 0%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .text-gradient-snack {
+            background: linear-gradient(135deg, #fbbf24 0%, #f97316 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 0.8; }
+        }
+
+        .animate-glow {
+            animation: pulseGlow 4s infinite ease-in-out;
+        }
+
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-cyber-neon selection:text-black min-h-screen flex flex-col">
+
+    <header class="sticky top-0 z-40 w-full cyber-glass border-b border-slate-800 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Brand Logo -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-cyber-cyan via-emerald-500 to-amber-500 flex items-center justify-center text-slate-950 font-tech font-black text-xl shadow-lg shadow-cyber-cyan/20 group-hover:scale-105 transition-transform duration-300">
+                        TK
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-2xl font-tech font-black tracking-wider text-white">TOKO</span>
+                            <span class="text-2xl font-tech font-black text-gradient-tech">KITA</span>
+                        </div>
+                        <p class="text-[10px] font-mono tracking-widest text-slate-400 uppercase">Cupang • Tech • Klepon</p>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav Navigation -->
+                <nav class="hidden md:flex items-center gap-8 font-medium text-sm text-slate-300">
+                    <a href="#beranda" class="hover:text-cyber-neon transition-colors py-1">Beranda</a>
+                    <a href="#katalog" class="hover:text-cyber-neon transition-colors py-1">Katalog Serba Ada</a>
+                    <a href="#bundle-builder" class="hover:text-amberGold-400 transition-colors py-1 flex items-center gap-1.5">
+                        <i data-lucide="sparkles" class="w-4 h-4 text-amberGold-400"></i> Bundle PC & Snack
+                    </a>
+                    <a href="#setup-quiz" class="hover:text-cyber-neon transition-colors py-1">Kuis Setup Mood</a>
+                </nav>
+
+                <!-- Actions / Cart Toggle -->
+                <div class="flex items-center gap-3">
+                    <button id="cart-toggle-btn" class="relative p-3 rounded-2xl bg-slate-900/80 hover:bg-slate-800 text-slate-200 border border-slate-700/60 focus:outline-none transition-all shadow-md group">
+                        <i data-lucide="shopping-bag" class="w-5 h-5 group-hover:text-cyber-neon transition-colors"></i>
+                        <span id="cart-badge" class="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-amberGold-500 text-slate-950 text-[11px] font-extrabold flex items-center justify-center scale-0 transition-transform duration-300 shadow-md">0</span>
+                    </button>
+                    <button id="mobile-menu-btn" class="md:hidden p-2.5 rounded-2xl bg-slate-900 border border-slate-800 text-slate-300">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-slate-800 bg-cyber-bg/95 backdrop-blur-xl">
+            <div class="px-4 pt-3 pb-5 space-y-2">
+                <a href="#beranda" class="block px-4 py-2.5 rounded-xl text-slate-200 hover:bg-slate-800 hover:text-cyber-neon font-semibold text-sm">Beranda</a>
+                <a href="#katalog" class="block px-4 py-2.5 rounded-xl text-slate-200 hover:bg-slate-800 hover:text-cyber-neon font-semibold text-sm">Katalog Serba Ada</a>
+                <a href="#bundle-builder" class="block px-4 py-2.5 rounded-xl text-slate-200 hover:bg-slate-800 hover:text-amberGold-400 font-semibold text-sm">Bundle PC & Snack</a>
+                <a href="#setup-quiz" class="block px-4 py-2.5 rounded-xl text-slate-200 hover:bg-slate-800 hover:text-cyber-neon font-semibold text-sm">Kuis Setup Mood</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <section id="beranda" class="relative py-16 sm:py-24 lg:py-28 overflow-hidden border-b border-slate-800/80">
+            <!-- Neon Ambient Glow Spheres Background -->
+            <div class="absolute top-1/4 left-10 w-96 h-96 bg-cyber-cyan/15 rounded-full blur-3xl pointer-events-none animate-glow"></div>
+            <div class="absolute bottom-10 right-10 w-96 h-96 bg-amberGold-500/15 rounded-full blur-3xl pointer-events-none animate-glow"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Hero Info -->
+                    <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900/90 border border-cyan-500/30 text-cyber-neon text-xs font-mono uppercase tracking-wider shadow-inner">
+                            <span class="w-2 h-2 rounded-full bg-cyber-neon animate-ping"></span> Toko Unique Lifestyle Hub #1
+                        </div>
+
+                        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-tech font-extrabold leading-tight tracking-tight text-white">
+                            Pusat <span class="text-gradient-tech">Cupang Premium</span>, Hardware PC & <span class="text-gradient-snack">Klepon Lumer</span>!
+                        </h1>
+
+                        <p class="text-slate-400 text-sm sm:text-base max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
+                            Nikmati kombinasi unik yang belum pernah ada! Upgrade <strong class="text-slate-200">setup gaming PC-mu</strong>, hiasi meja dengan <strong class="text-slate-200">Ikan Cupang High-Grade</strong>, sambil ngemil <strong class="text-slate-200">Klepon Aren Fresh Made</strong>.
+                        </p>
+
+                        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                            <a href="#katalog" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-cyber-cyan to-emerald-500 hover:from-cyan-400 hover:to-emerald-400 text-slate-950 font-tech font-bold text-sm shadow-xl shadow-cyber-cyan/20 transition-all transform hover:-translate-y-0.5 text-center flex items-center justify-center gap-2">
+                                <i data-lucide="shopping-bag" class="w-5 h-5"></i> Jelajahi Produk
+                            </a>
+                            <a href="#bundle-builder" class="w-full sm:w-auto px-7 py-4 rounded-2xl bg-slate-900 hover:bg-slate-800 text-amberGold-400 font-bold text-sm border border-amberGold-500/30 transition-all text-center flex items-center justify-center gap-2">
+                                <i data-lucide="package-plus" class="w-5 h-5"></i> Rakit Bundle Unik
+                            </a>
+                        </div>
+
+                        <!-- Stats Badge Grid -->
+                        <div class="pt-6 grid grid-cols-3 gap-4 border-t border-slate-800/80 max-w-lg mx-auto lg:mx-0 text-left">
+                            <div>
+                                <span class="block text-xl sm:text-2xl font-tech font-extrabold text-cyber-neon">100%</span>
+                                <span class="text-xs text-slate-400">Cupang Grade A</span>
+                            </div>
+                            <div>
+                                <span class="block text-xl sm:text-2xl font-tech font-extrabold text-amberGold-400">Garansi</span>
+                                <span class="text-xs text-slate-400">Hardware & Live Fish</span>
+                            </div>
+                            <div>
+                                <span class="block text-xl sm:text-2xl font-tech font-extrabold text-emerald-400">Fresh</span>
+                                <span class="text-xs text-slate-400">Klepon Made Daily</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hero Visual Showcases -->
+                    <div class="lg:col-span-5 flex justify-center">
+                        <div class="relative w-full max-w-md rounded-3xl cyber-glass-glow p-5 neon-border-cyan">
+                            <div class="relative h-64 sm:h-72 rounded-2xl overflow-hidden mb-4 bg-slate-950">
+                                <img id="hero-carousel-img" src="https://images.unsplash.com/photo-1534567153574-2b12153a87f0?auto=format&fit=crop&w=800&q=80" alt="Special Featured Showcase" class="w-full h-full object-cover transition-opacity duration-500">
+                                <div class="absolute top-3 left-3 px-3 py-1 rounded-full bg-slate-950/80 text-cyber-neon font-mono font-bold text-xs border border-cyber-cyan/40">
+                                    ★ HIGHLIGHT HARI INI
+                                </div>
+                            </div>
+                            <div class="space-y-2">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h3 id="hero-carousel-title" class="text-lg font-tech font-bold text-white">Cupang Avatar Gordon Multi</h3>
+                                        <p id="hero-carousel-sub" class="text-xs text-slate-400">Kategori: Ikan Cupang Premium</p>
+                                    </div>
+                                    <span id="hero-carousel-price" class="text-cyber-neon font-tech font-bold text-lg">Rp 350.000</span>
+                                </div>
+                                <p id="hero-carousel-desc" class="text-xs text-slate-300">Warna avatar bercahaya metalik tajam dengan mental bertarung & hiasan tinggi.</p>
+                                <button onclick="addToCart(1)" class="w-full mt-3 py-3 rounded-xl bg-cyber-cyan/20 hover:bg-cyber-cyan/30 text-cyber-neon font-bold text-xs border border-cyber-cyan/50 transition-all flex items-center justify-center gap-2">
+                                    <i data-lucide="plus-circle" class="w-4 h-4"></i> Tambah Ke Keranjang
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="katalog" class="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-cyber-neon font-mono text-xs uppercase tracking-widest bg-cyan-950/60 border border-cyan-500/30 px-3.5 py-1.5 rounded-full">Katalog Lengkap</span>
+                <h2 class="text-3xl sm:text-4xl font-tech font-bold text-white mt-3">Produk Serba Ada Toko Kita</h2>
+                <p class="mt-2 text-slate-400 text-sm sm:text-base">Temukan perlengkapan PC gaming impianmu, koleksi cupang eksotis, hingga jajanan klepon manis lezat.</p>
+            </div>
+
+            <!-- Filter, Search & Sorting Controls -->
+            <div class="space-y-4 mb-10 bg-cyber-card p-4 sm:p-5 rounded-3xl border border-slate-800">
+                <!-- Search & Sort Row -->
+                <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                    <!-- Live Search -->
+                    <div class="relative w-full md:w-96">
+                        <i data-lucide="search" class="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                        <input type="text" id="search-input" placeholder="Cari Cupang, Mechanical Keyboard, atau Klepon..." class="w-full pl-10 pr-4 py-2.5 rounded-2xl bg-slate-900 border border-slate-700/80 text-slate-100 text-sm focus:outline-none focus:border-cyber-cyan focus:ring-1 focus:ring-cyber-cyan">
+                    </div>
+
+                    <!-- Sort Dropdown -->
+                    <div class="flex items-center gap-2 w-full md:w-auto">
+                        <span class="text-xs text-slate-400 font-mono whitespace-nowrap">Urutkan:</span>
+                        <select id="sort-select" class="w-full md:w-52 px-3.5 py-2.5 rounded-2xl bg-slate-900 border border-slate-700/80 text-slate-200 text-xs font-semibold focus:outline-none focus:border-cyber-cyan">
+                            <option value="featured">Paling Populer</option>
+                            <option value="price-low">Harga: Terendah ke Tertinggi</option>
+                            <option value="price-high">Harga: Tertinggi ke Terendah</option>
+                            <option value="name">Nama Produk A-Z</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Category Tabs Filter Buttons -->
+                <div class="flex flex-wrap gap-2 pt-2 border-t border-slate-800">
+                    <button class="filter-btn active px-4 py-2 rounded-2xl text-xs font-bold transition-all bg-cyber-cyan text-slate-950" data-category="all">
+                        Semua Produk
+                    </button>
+                    <button class="filter-btn px-4 py-2 rounded-2xl text-xs font-bold transition-all bg-slate-900 text-slate-300 hover:bg-slate-800 hover:text-white border border-slate-800" data-category="cupang">
+                        🐟 Ikan Cupang Hias
+                    </button>
+                    <button class="filter-btn px-4 py-2 rounded-2xl text-xs font-bold transition-all bg-slate-900 text-slate-300 hover:bg-slate-800 hover:text-white border border-slate-800" data-category="tech">
+                        💻 Perangkat Komputer
+                    </button>
+                    <button class="filter-btn px-4 py-2 rounded-2xl text-xs font-bold transition-all bg-slate-900 text-slate-300 hover:bg-slate-800 hover:text-white border border-slate-800" data-category="klepon">
+                        🍡 Klepon & Jajanan
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product Grid -->
+            <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                <!-- Products injected by JavaScript -->
+            </div>
+        </section>
+
+        <section id="bundle-builder" class="py-16 sm:py-24 bg-gradient-to-b from-slate-950 via-cyber-card to-slate-950 border-y border-slate-800 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <span class="text-amberGold-400 font-mono text-xs uppercase tracking-widest bg-amber-950/50 border border-amber-500/30 px-3.5 py-1.5 rounded-full">Fitur Unik Toko Kita</span>
+                    <h2 class="text-3xl sm:text-4xl font-tech font-bold text-white mt-3">Custom Workstation & Snack Bundle</h2>
+                    <p class="text-slate-400 text-sm mt-2">Kombinasikan Hardware PC + Ikan Cupang Peneman Meja + Klepon untuk Workstation impianmu dengan potongan diskon otomatis!</p>
+                </div>
+
+                <div class="grid lg:grid-cols-12 gap-8 items-start">
+                    <!-- Left: Bundle Selection Slots -->
+                    <div class="lg:col-span-7 space-y-4">
+                        <!-- Step 1: Select Hardware -->
+                        <div class="bg-slate-900/90 p-5 rounded-3xl border border-slate-800 space-y-3">
+                            <label class="block text-xs font-mono font-bold text-cyber-neon uppercase">1. Pilih Hardware PC / Aksesoris</label>
+                            <select id="bundle-tech" class="w-full px-4 py-3 rounded-2xl bg-cyber-bg border border-slate-700 text-sm text-slate-100 focus:outline-none focus:border-cyber-cyan">
+                                <option value="">-- Tanpa Hardware PC --</option>
+                            </select>
+                        </div>
+
+                        <!-- Step 2: Select Cupang -->
+                        <div class="bg-slate-900/90 p-5 rounded-3xl border border-slate-800 space-y-3">
+                            <label class="block text-xs font-mono font-bold text-emerald-400 uppercase">2. Pilih Teman Meja Workstation (Cupang Hias)</label>
+                            <select id="bundle-cupang" class="w-full px-4 py-3 rounded-2xl bg-cyber-bg border border-slate-700 text-sm text-slate-100 focus:outline-none focus:border-emerald-400">
+                                <option value="">-- Tanpa Ikan Cupang --</option>
+                            </select>
+                        </div>
+
+                        <!-- Step 3: Select Klepon -->
+                        <div class="bg-slate-900/90 p-5 rounded-3xl border border-slate-800 space-y-3">
+                            <label class="block text-xs font-mono font-bold text-amberGold-400 uppercase">3. Pilih Camilan Sambil Gaming / Kerja (Klepon)</label>
+                            <select id="bundle-snack" class="w-full px-4 py-3 rounded-2xl bg-cyber-bg border border-slate-700 text-sm text-slate-100 focus:outline-none focus:border-amberGold-400">
+                                <option value="">-- Tanpa Klepon --</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Right: Bundle Summary & Discount Box -->
+                    <div class="lg:col-span-5 bg-cyber-bg p-6 rounded-3xl border border-amberGold-500/30 neon-border-amber space-y-5">
+                        <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+                            <h3 class="font-tech font-bold text-lg text-white flex items-center gap-2">
+                                <i data-lucide="package-check" class="w-5 h-5 text-amberGold-400"></i> Ringkasan Bundle Anda
+                            </h3>
+                            <span id="bundle-discount-badge" class="px-2.5 py-1 rounded-full bg-amberGold-500/20 text-amberGold-400 text-[11px] font-mono font-bold border border-amberGold-500/40">Diskon 0%</span>
+                        </div>
+
+                        <div id="bundle-items-list" class="space-y-3 min-h-[140px] text-xs text-slate-400">
+                            <!-- Injected JS -->
+                            <p class="italic text-slate-500">Pilih minimal 2 item dari kategori berbeda untuk mendapatkan Diskon Paket Combo!</p>
+                        </div>
+
+                        <div class="border-t border-slate-800 pt-4 space-y-2">
+                            <div class="flex justify-between text-xs text-slate-400">
+                                <span>Total Normal:</span>
+                                <span id="bundle-normal-price" class="line-through">Rp 0</span>
+                            </div>
+                            <div class="flex justify-between items-center text-sm font-bold text-white">
+                                <span>Harga Spesial Bundle:</span>
+                                <span id="bundle-final-price" class="text-2xl font-tech font-extrabold text-amberGold-400">Rp 0</span>
+                            </div>
+                        </div>
+
+                        <button id="add-bundle-to-cart-btn" class="w-full py-4 rounded-2xl bg-amberGold-500 hover:bg-amberGold-400 text-slate-950 font-tech font-bold text-sm transition-all shadow-lg shadow-amber-500/20 flex items-center justify-center gap-2">
+                            <i data-lucide="shopping-cart" class="w-4 h-4"></i> Masukkan Bundle ke Keranjang
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="setup-quiz" class="py-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-cyber-card rounded-3xl p-6 sm:p-10 border border-slate-800 shadow-2xl text-center">
+                <span class="px-3 py-1 rounded-full bg-cyan-950 text-cyber-neon border border-cyan-500/30 text-xs font-mono uppercase tracking-wider">Kuis Rekomendasi Workstation & Mood</span>
+                <h2 class="text-2xl sm:text-3xl font-tech font-bold text-white mt-3">Cari Tahu Kombinasi Setup Idealmu!</h2>
+                <p class="text-slate-400 text-xs sm:text-sm mt-1">Jawab pertanyaan singkat untuk menemukan kombinasi Ikan Cupang + Gear PC + Variant Klepon yang cocok untuk kepribadianmu.</p>
+
+                <div id="quiz-container" class="mt-8 text-left max-w-xl mx-auto">
+                    <!-- Progress Bar -->
+                    <div class="flex items-center justify-between mb-3 text-xs font-mono text-slate-400">
+                        <span id="quiz-step-label">Pertanyaan 1 dari 2</span>
+                        <div class="w-28 bg-slate-900 h-2 rounded-full overflow-hidden border border-slate-800">
+                            <div id="quiz-progress-bar" class="bg-cyber-cyan h-full w-1/2 transition-all duration-300"></div>
+                        </div>
+                    </div>
+
+                    <!-- Question Container Box -->
+                    <div id="quiz-question-box" class="bg-slate-900/80 p-6 rounded-2xl border border-slate-800 min-h-[220px] flex flex-col justify-between">
+                        <!-- Injected JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="cart-sidebar" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md hidden transition-opacity duration-300">
+        <div class="absolute right-0 top-0 bottom-0 w-full max-w-md bg-cyber-card border-l border-slate-800 shadow-2xl flex flex-col">
+            <!-- Header -->
+            <div class="p-5 border-b border-slate-800 flex items-center justify-between bg-slate-900">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyber-cyan to-emerald-500 text-slate-950 font-bold flex items-center justify-center">
+                        <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-tech font-bold text-white text-base">Keranjang Pesanan</h3>
+                        <p class="text-[11px] font-mono text-slate-400">Toko Kita Official Hub</p>
+                    </div>
+                </div>
+                <button id="close-cart-btn" class="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition-colors">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <!-- Cart Items Scroll Area -->
+            <div id="cart-items" class="flex-grow overflow-y-auto p-5 space-y-4">
+                <!-- Dynamic Items Injected by JS -->
+            </div>
+
+            <!-- Footer & Checkout Form -->
+            <div class="p-5 border-t border-slate-800 bg-slate-900 space-y-4">
+                <div class="flex justify-between items-center font-semibold text-slate-300 text-sm">
+                    <span>Subtotal Belanja</span>
+                    <span id="cart-total" class="text-xl font-tech font-extrabold text-cyber-neon">Rp 0</span>
+                </div>
+
+                <div class="space-y-2 pt-1">
+                    <input type="text" id="cust-name" placeholder="Nama Lengkap Pemesan" class="w-full px-3.5 py-2.5 rounded-xl bg-cyber-bg border border-slate-700 text-xs text-slate-100 focus:outline-none focus:border-cyber-cyan">
+                    <textarea id="cust-address" placeholder="Alamat Pengiriman Lengkap" rows="2" class="w-full px-3.5 py-2.5 rounded-xl bg-cyber-bg border border-slate-700 text-xs text-slate-100 focus:outline-none focus:border-cyber-cyan resize-none"></textarea>
+                    <input type="text" id="cust-notes" placeholder="Catatan (Misal: klepon dipisah kelapa / proteksi packing cupang)" class="w-full px-3.5 py-2.5 rounded-xl bg-cyber-bg border border-slate-700 text-[11px] text-slate-100 focus:outline-none focus:border-cyber-cyan">
+                </div>
+
+                <button id="checkout-wa-btn" class="w-full py-3.5 rounded-2xl bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-slate-950 font-tech font-bold text-xs flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20 transition-all">
+                    <i data-lucide="send" class="w-4 h-4"></i> Checkout via WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="product-modal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md hidden flex items-center justify-center p-4">
+        <div class="bg-cyber-card rounded-3xl max-w-lg w-full overflow-hidden border border-slate-800 shadow-2xl relative animate-in fade-in zoom-in duration-200">
+            <button id="close-modal-btn" class="absolute top-4 right-4 z-10 p-2 rounded-full bg-slate-950/70 text-slate-300 hover:text-white border border-slate-800">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            <div class="h-64 relative bg-slate-950">
+                <img id="modal-img" src="" alt="" class="w-full h-full object-cover">
+            </div>
+            <div class="p-6 space-y-4">
+                <div class="flex items-center justify-between">
+                    <span id="modal-category" class="px-3 py-1 rounded-full bg-slate-900 text-cyber-neon border border-cyan-500/30 text-xs font-mono uppercase">Category</span>
+                    <span id="modal-price" class="text-2xl font-tech font-bold text-amberGold-400">Rp 0</span>
+                </div>
+                <h3 id="modal-title" class="text-2xl font-tech font-bold text-white">Product Title</h3>
+                <p id="modal-desc" class="text-slate-300 text-xs sm:text-sm leading-relaxed">Product description details...</p>
+                
+                <div class="pt-2 border-t border-slate-800">
+                    <button id="modal-add-btn" class="w-full py-3.5 rounded-2xl bg-cyber-cyan hover:bg-cyan-400 text-slate-950 font-tech font-bold text-xs flex items-center justify-center gap-2 transition-colors">
+                        <i data-lucide="shopping-bag" class="w-4 h-4"></i> Masukkan ke Keranjang Belanja
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-slate-950 text-slate-400 pt-16 pb-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+                <div class="md:col-span-2 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-cyber-cyan to-amberGold-400 text-slate-950 font-tech font-black flex items-center justify-center text-sm">
+                            TK
+                        </div>
+                        <span class="text-lg font-tech font-bold text-white tracking-wider">TOKO KITA</span>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed max-w-md">
+                        Pusat perbelanjaan gaya hidup modern serba ada! Menjual koleksi Ikan Cupang Hias grade premium, hardware & perlengkapan PC gaming, serta jajanan klepon lumer khas Nusantara.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-tech font-bold mb-4 text-xs uppercase tracking-wider">Kategori Utama</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#katalog" class="hover:text-cyber-neon transition-colors">Ikan Cupang Hias</a></li>
+                        <li><a href="#katalog" class="hover:text-cyber-neon transition-colors">Perangkat Komputer / PC</a></li>
+                        <li><a href="#katalog" class="hover:text-cyber-neon transition-colors">Klepon Tradisional</a></li>
+                        <li><a href="#bundle-builder" class="hover:text-amberGold-400 transition-colors">Custom Workstation Bundle</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-tech font-bold mb-4 text-xs uppercase tracking-wider">Layanan Hub</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-cyber-neon"></i> Hub Toko Kita, Nusantara</li>
+                        <li class="flex items-center gap-2"><i data-lucide="phone" class="w-4 h-4 text-cyber-neon"></i> +62 857-0781-0695</li>
+                        <li class="flex items-center gap-2"><i data-lucide="shield-check" class="w-4 h-4 text-cyber-neon"></i> Garansi Ikan Hidup & Sparepart</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-slate-900 text-center text-xs text-slate-500 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <p>&copy; 2026 Toko Kita. Hak Cipta Dilindungi.</p>
+                <p class="text-slate-500 font-mono">Cyber Cupang • Gaming Hardware • Klepon Lumer</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Products Database
+        const products = [
+            // IKAN CUPANG
+            {
+                id: 1,
+                name: "Cupang Avatar Gordon Multi",
+                category: "cupang",
+                price: 350000,
+                badge: "High Grade",
+                image: "https://images.unsplash.com/photo-1534567153574-2b12153a87f0?auto=format&fit=crop&w=600&q=80",
+                desc: "Grade A++ Male Avatar Gordon dengan sisik mengkilap metalik bernuansa biru galaxy. Sangat agresif & sehat."
+            },
+            {
+                id: 2,
+                name: "Cupang Halfmoon Red Dragon",
+                category: "cupang",
+                price: 220000,
+                badge: "Full Tail 180°",
+                image: "https://images.unsplash.com/photo-1520315342629-6ea920342047?auto=format&fit=crop&w=600&q=80",
+                desc: "Buntut lebar sempurna 180 derajat warna merah naga pekat dengan variasi warna putih naga di badan."
+            },
+            {
+                id: 3,
+                name: "Cupang Giant Nemo Galaxy",
+                category: "cupang",
+                price: 290000,
+                badge: "Size BO 5.2cm",
+                image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=600&q=80",
+                desc: "Ukuran badan jumbo Giant dengan kombinasi warna Nemo Galaxy oranye, hitam & totol perak metalik."
+            },
+
+            // HARDWARE KOMPUTER
+            {
+                id: 4,
+                name: "Monitor Gaming Curved 144Hz 24\"",
+                category: "tech",
+                price: 1850000,
+                badge: "Gaming Gear",
+                image: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=600&q=80",
+                desc: "Monitor lengkung Response Time 1ms, DisplayPort/HDMI, resolusi Full HD dengan teknologi FreeSync."
+            },
+            {
+                id: 5,
+                name: "Mechanical Keyboard RGB Custom Switch",
+                category: "tech",
+                price: 550000,
+                badge: "Hot-Swappable",
+                image: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=600&q=80",
+                desc: "Keyboard mechanical 75% layout, keycaps PBT berkualitas, RGB backlight 16.8 juta warna & hotswap switch."
+            },
+            {
+                id: 6,
+                name: "Mouse Wireless Ergonomic Precision",
+                category: "tech",
+                price: 320000,
+                badge: "Ultra Low Latency",
+                image: "https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?auto=format&fit=crop&w=600&q=80",
+                desc: "Sensor optic 16.000 DPI, baterai tahan hingga 70 jam, desain ergonomis untuk kenyamanan kerja dan gaming."
+            },
+
+            // KLEPON & KULINER
+            {
+                id: 7,
+                name: "Klepon Pandan Suji Gula Jawa (12 Biji)",
+                category: "klepon",
+                price: 25000,
+                badge: "Fresh Made",
+                image: "https://images.unsplash.com/photo-1627834377411-8da5f4f09de8?auto=format&fit=crop&w=600&q=80",
+                desc: "100% perasan daun pandan suji asli, isian gula aren murni melimpah lumer di mulut dan parutan kelapa kukus gurih."
+            },
+            {
+                id: 8,
+                name: "Klepon Red Velvet Melted Chocolate",
+                category: "klepon",
+                price: 30000,
+                badge: "Varian Modern",
+                image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80",
+                desc: "Inovasi adonan Klepon Red Velvet dengan kelezatan melted cokelat Belgian hangat di setiap gigitan."
+            },
+            {
+                id: 9,
+                name: "Paket Tampah Syukuran Klepon Mix (50 Biji)",
+                category: "klepon",
+                price: 125000,
+                badge: "Hampers Box",
+                image: "https://images.unsplash.com/photo-1607478900766-efe13248b125?auto=format&fit=crop&w=600&q=80",
+                desc: "Pilihan tampah bambu estetik isi 50 biji klepon aneka varian rasa (Pandan, Red Velvet & Ubi Ungu)."
+            }
+        ];
+
+        // State Management
+        let cart = [];
+        let currentCategory = 'all';
+        let searchQuery = '';
+        let sortBy = 'featured';
+
+        // DOM Elements
+        const productGrid = document.getElementById('product-grid');
+        const searchInput = document.getElementById('search-input');
+        const sortSelect = document.getElementById('sort-select');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+
+        // Cart Elements
+        const cartToggleBtn = document.getElementById('cart-toggle-btn');
+        const closeCartBtn = document.getElementById('close-cart-btn');
+        const cartSidebar = document.getElementById('cart-sidebar');
+        const cartItemsContainer = document.getElementById('cart-items');
+        const cartTotalEl = document.getElementById('cart-total');
+        const cartBadge = document.getElementById('cart-badge');
+
+        // Modal Elements
+        const productModal = document.getElementById('product-modal');
+        const closeModalBtn = document.getElementById('close-modal-btn');
+        const modalImg = document.getElementById('modal-img');
+        const modalCategory = document.getElementById('modal-category');
+        const modalTitle = document.getElementById('modal-title');
+        const modalDesc = document.getElementById('modal-desc');
+        const modalPrice = document.getElementById('modal-price');
+        const modalAddBtn = document.getElementById('modal-add-btn');
+        let selectedProductForModal = null;
+
+        // Currency Formatter
+        function formatRupiah(num) {
+            return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(num);
+        }
+
+        // Render Product Catalog Cards
+        function renderProducts() {
+            let filtered = products.filter(p => {
+                const matchCategory = currentCategory === 'all' || p.category === currentCategory;
+                const matchSearch = p.name.toLowerCase().includes(searchQuery.toLowerCase()) || p.desc.toLowerCase().includes(searchQuery.toLowerCase());
+                return matchCategory && matchSearch;
+            });
+
+            // Sorting Logic
+            if (sortBy === 'price-low') {
+                filtered.sort((a, b) => a.price - b.price);
+            } else if (sortBy === 'price-high') {
+                filtered.sort((a, b) => b.price - a.price);
+            } else if (sortBy === 'name') {
+                filtered.sort((a, b) => a.name.localeCompare(b.name));
+            }
+
+            if (filtered.length === 0) {
+                productGrid.innerHTML = `
+                    <div class="col-span-full py-16 text-center text-slate-500">
+                        <i data-lucide="package-x" class="w-12 h-12 mx-auto mb-3 text-slate-600"></i>
+                        <p class="font-tech font-bold text-slate-400">Produk Tidak Ditemukan</p>
+                        <p class="text-xs mt-1">Coba gunakan kata kunci pencarian atau filter kategori lainnya.</p>
+                    </div>
+                `;
+                lucide.createIcons();
+                return;
+            }
+
+            productGrid.innerHTML = filtered.map(product => `
+                <div class="bg-cyber-card rounded-3xl overflow-hidden border border-slate-800 shadow-md hover:border-slate-700 hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                    <div>
+                        <div class="relative h-52 overflow-hidden bg-slate-950">
+                            <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/0f172a/ffffff?text=${encodeURIComponent(product.name)}'">
+                            <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-slate-950/80 backdrop-blur-md text-cyber-neon font-mono font-bold text-[10px] uppercase border border-cyan-500/30">
+                                ${product.badge}
+                            </span>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="font-tech font-bold text-white text-base hover:text-cyber-neon transition-colors cursor-pointer line-clamp-1" onclick="openProductModal(${product.id})">
+                                ${product.name}
+                            </h3>
+                            <p class="text-slate-400 text-xs mt-2 line-clamp-2 leading-relaxed">
+                                ${product.desc}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="px-5 pb-5 pt-0 flex items-center justify-between">
+                        <div>
+                            <span class="text-[10px] font-mono text-slate-500 block uppercase">Harga</span>
+                            <span class="text-lg font-tech font-bold text-amberGold-400">${formatRupiah(product.price)}</span>
+                        </div>
+                        <button onclick="addToCart(${product.id})" class="px-3.5 py-2 rounded-xl bg-slate-900 text-slate-200 hover:bg-cyber-cyan hover:text-slate-950 transition-all font-bold text-xs flex items-center gap-1.5 border border-slate-700">
+                            <i data-lucide="plus" class="w-4 h-4"></i> Tambah
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+
+            lucide.createIcons();
+        }
+
+        function addToCart(productId, customQty = 1) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            const existing = cart.find(item => item.id === productId);
+            if (existing) {
+                existing.qty += customQty;
+            } else {
+                cart.push({ ...product, qty: customQty });
+            }
+
+            updateCartUI();
+            openCart();
+        }
+
+        function updateQty(productId, change) {
+            const item = cart.find(i => i.id === productId);
+            if (item) {
+                item.qty += change;
+                if (item.qty <= 0) {
+                    cart = cart.filter(i => i.id !== productId);
+                }
+            }
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+            cartBadge.textContent = totalQty;
+            cartBadge.style.transform = totalQty > 0 ? 'scale(1)' : 'scale(0)';
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = `
+                    <div class="h-full flex flex-col items-center justify-center text-slate-500 py-16">
+                        <i data-lucide="shopping-bag" class="w-12 h-12 mb-3 text-slate-700"></i>
+                        <p class="font-tech font-bold text-slate-400 text-sm">Keranjang Masih Kosong</p>
+                        <p class="text-xs text-slate-500 mt-1">Pilih Cupang, Gear PC, atau Klepon kesukaanmu!</p>
+                    </div>
+                `;
+            } else {
+                cartItemsContainer.innerHTML = cart.map(item => `
+                    <div class="flex items-center gap-3.5 bg-slate-900 p-3 rounded-2xl border border-slate-800">
+                        <img src="${item.image}" alt="${item.name}" class="w-14 h-14 rounded-xl object-cover shrink-0" onerror="this.src='https://placehold.co/100?text=TokoKita'">
+                        <div class="flex-grow">
+                            <h4 class="text-xs font-tech font-bold text-white line-clamp-1">${item.name}</h4>
+                            <span class="text-xs text-amberGold-400 font-bold">${formatRupiah(item.price)}</span>
+                            <div class="flex items-center gap-2 mt-1.5">
+                                <button onclick="updateQty(${item.id}, -1)" class="w-5 h-5 rounded bg-slate-800 text-slate-300 hover:bg-slate-700 flex items-center justify-center text-xs font-bold">-</button>
+                                <span class="text-xs font-bold text-slate-200">${item.qty}</span>
+                                <button onclick="updateQty(${item.id}, 1)" class="w-5 h-5 rounded bg-slate-800 text-slate-300 hover:bg-slate-700 flex items-center justify-center text-xs font-bold">+</button>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            cartTotalEl.textContent = formatRupiah(total);
+
+            lucide.createIcons();
+        }
+
+        function openCart() { cartSidebar.classList.remove('hidden'); }
+        function closeCart() { cartSidebar.classList.add('hidden'); }
+
+        function openProductModal(id) {
+            const product = products.find(p => p.id === id);
+            if (!product) return;
+            selectedProductForModal = product;
+
+            modalImg.src = product.image;
+            modalCategory.textContent = product.category;
+            modalTitle.textContent = product.name;
+            modalDesc.textContent = product.desc;
+            modalPrice.textContent = formatRupiah(product.price);
+
+            productModal.classList.remove('hidden');
+        }
+
+        closeModalBtn.addEventListener('click', () => productModal.classList.add('hidden'));
+        modalAddBtn.addEventListener('click', () => {
+            if (selectedProductForModal) {
+                addToCart(selectedProductForModal.id);
+                productModal.classList.add('hidden');
+            }
+        });
+
+        document.getElementById('checkout-wa-btn').addEventListener('click', () => {
+            if (cart.length === 0) {
+                alert('Keranjang belanja Anda masih kosong!');
+                return;
+            }
+
+            const name = document.getElementById('cust-name').value.trim();
+            const address = document.getElementById('cust-address').value.trim();
+            const notes = document.getElementById('cust-notes').value.trim();
+
+            if (!name || !address) {
+                alert('Mohon isi Nama Pemesan dan Alamat Pengiriman.');
+                return;
+            }
+
+            let message = `*ORDERNAN BARU - TOKO KITA OFFICIAL*\n\n`;
+            message += `*Data Pelanggan:*\n`;
+            message += `• Nama: ${name}\n`;
+            message += `• Alamat Pengiriman: ${address}\n`;
+            if (notes) message += `• Catatan Khusus: ${notes}\n`;
+            message += `\n*Daftar Belanjaan:*\n`;
+
+            cart.forEach((item, idx) => {
+                message += `${idx + 1}. ${item.name} (${item.qty}x) - ${formatRupiah(item.price * item.qty)}\n`;
+            });
+
+            const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            message += `\n*Total Bayar:* ${formatRupiah(total)}\n\n`;
+            message += `Mohon info nomor rekening / QRIS pembayaran & konfirmasi pengiriman. Terima kasih! ⚡🚀`;
+
+            const encoded = encodeURIComponent(message);
+            window.open(`https://wa.me/6285707810695?text=${encoded}`, '_blank');
+        });
+
+        function initBundleBuilder() {
+            const techSelect = document.getElementById('bundle-tech');
+            const cupangSelect = document.getElementById('bundle-cupang');
+            const snackSelect = document.getElementById('bundle-snack');
+
+            const techItems = products.filter(p => p.category === 'tech');
+            const cupangItems = products.filter(p => p.category === 'cupang');
+            const snackItems = products.filter(p => p.category === 'klepon');
+
+            techItems.forEach(item => {
+                techSelect.innerHTML += `<option value="${item.id}">${item.name} (${formatRupiah(item.price)})</option>`;
+            });
+            cupangItems.forEach(item => {
+                cupangSelect.innerHTML += `<option value="${item.id}">${item.name} (${formatRupiah(item.price)})</option>`;
+            });
+            snackItems.forEach(item => {
+                snackSelect.innerHTML += `<option value="${item.id}">${item.name} (${formatRupiah(item.price)})</option>`;
+            });
+
+            [techSelect, cupangSelect, snackSelect].forEach(select => {
+                select.addEventListener('change', updateBundleSummary);
+            });
+        }
+
+        function updateBundleSummary() {
+            const techId = parseInt(document.getElementById('bundle-tech').value);
+            const cupangId = parseInt(document.getElementById('bundle-cupang').value);
+            const snackId = parseInt(document.getElementById('bundle-snack').value);
+
+            const selectedItems = [];
+            if (techId) selectedItems.push(products.find(p => p.id === techId));
+            if (cupangId) selectedItems.push(products.find(p => p.id === cupangId));
+            if (snackId) selectedItems.push(products.find(p => p.id === snackId));
+
+            const itemsListEl = document.getElementById('bundle-items-list');
+            const normalPriceEl = document.getElementById('bundle-normal-price');
+            const finalPriceEl = document.getElementById('bundle-final-price');
+            const badgeEl = document.getElementById('bundle-discount-badge');
+
+            if (selectedItems.length === 0) {
+                itemsListEl.innerHTML = `<p class="italic text-slate-500">Pilih minimal 2 item dari kategori berbeda untuk mendapatkan Diskon Paket Combo!</p>`;
+                normalPriceEl.textContent = 'Rp 0';
+                finalPriceEl.textContent = 'Rp 0';
+                badgeEl.textContent = 'Diskon 0%';
+                return;
+            }
+
+            let discountPercent = 0;
+            if (selectedItems.length === 2) discountPercent = 5;
+            if (selectedItems.length === 3) discountPercent = 10;
+
+            const totalNormal = selectedItems.reduce((sum, item) => sum + item.price, 0);
+            const finalPrice = totalNormal * (1 - discountPercent / 100);
+
+            itemsListEl.innerHTML = selectedItems.map(item => `
+                <div class="flex items-center justify-between bg-slate-900 p-2.5 rounded-xl border border-slate-800">
+                    <span class="text-slate-200 font-bold">${item.name}</span>
+                    <span class="text-amberGold-400 font-mono">${formatRupiah(item.price)}</span>
+                </div>
+            `).join('');
+
+            normalPriceEl.textContent = formatRupiah(totalNormal);
+            finalPriceEl.textContent = formatRupiah(finalPrice);
+            badgeEl.textContent = `Diskon ${discountPercent}%`;
+        }
+
+        document.getElementById('add-bundle-to-cart-btn').addEventListener('click', () => {
+            const techId = parseInt(document.getElementById('bundle-tech').value);
+            const cupangId = parseInt(document.getElementById('bundle-cupang').value);
+            const snackId = parseInt(document.getElementById('bundle-snack').value);
+
+            if (!techId && !cupangId && !snackId) {
+                alert('Pilih minimal 1 produk untuk dimasukkan ke dalam bundle!');
+                return;
+            }
+
+            if (techId) addToCart(techId);
+            if (cupangId) addToCart(cupangId);
+            if (snackId) addToCart(snackId);
+        });
+
+        const quizData = [
+            {
+                q: "1. Apa aktivitas utama kamu sehari-hari?",
+                options: [
+                    { text: "Hardcore Gaming & Custom Rig Setup", recTech: 4, recCupang: 1, recSnack: 8 },
+                    { text: "Kerja Produktif & Coding Santai", recTech: 5, recCupang: 2, recSnack: 7 }
+                ]
+            },
+            {
+                q: "2. Suasana meja kerja yang kamu idamkan?",
+                options: [
+                    { text: "Futuristik dengan Neon Glowing Ambient", recTech: 5, recCupang: 1, recSnack: 8 },
+                    { text: "Minimalis & Natural dengan Ikan Hias Eleguai", recTech: 6, recCupang: 2, recSnack: 7 }
+                ]
+            }
+        ];
+
+        let quizIndex = 0;
+
+        function renderQuiz() {
+            const box = document.getElementById('quiz-question-box');
+            const stepLabel = document.getElementById('quiz-step-label');
+            const progressBar = document.getElementById('quiz-progress-bar');
+
+            if (quizIndex < quizData.length) {
+                const current = quizData[quizIndex];
+                stepLabel.textContent = `Pertanyaan ${quizIndex + 1} dari ${quizData.length}`;
+                progressBar.style.width = `${((quizIndex + 1) / quizData.length) * 100}%`;
+
+                box.innerHTML = `
+                    <h3 class="font-tech font-bold text-white text-base mb-4">${current.q}</h3>
+                    <div class="space-y-3">
+                        ${current.options.map(opt => `
+                            <button onclick="handleQuizAnswer(${opt.recTech}, ${opt.recCupang}, ${opt.recSnack})" class="w-full text-left p-3.5 rounded-xl bg-slate-900 border border-slate-800 hover:border-cyber-cyan hover:bg-slate-800 transition-all text-xs font-semibold text-slate-200 flex items-center justify-between group">
+                                <span>${opt.text}</span>
+                                <i data-lucide="chevron-right" class="w-4 h-4 text-cyber-neon group-hover:translate-x-1 transition-transform"></i>
+                            </button>
+                        `).join('')}
+                    </div>
+                `;
+            }
+            lucide.createIcons();
+        }
+
+        function handleQuizAnswer(techId, cupangId, snackId) {
+            quizIndex++;
+            if (quizIndex < quizData.length) {
+                renderQuiz();
+            } else {
+                // Show Result
+                const techProduct = products.find(p => p.id === techId);
+                const cupangProduct = products.find(p => p.id === cupangId);
+                const snackProduct = products.find(p => p.id === snackId);
+
+                const box = document.getElementById('quiz-question-box');
+                document.getElementById('quiz-step-label').textContent = "Hasil Rekomendasi Setup!";
+                document.getElementById('quiz-progress-bar').style.width = "100%";
+
+                box.innerHTML = `
+                    <div class="space-y-4 text-center">
+                        <span class="text-[10px] font-mono font-bold text-cyber-neon bg-cyan-950 px-3 py-1 rounded-full uppercase border border-cyan-500/30">Workstation Combo Match</span>
+                        <h3 class="text-base font-tech font-bold text-white">Rekomendasi Setup Idealamu:</h3>
+                        <div class="grid grid-cols-3 gap-2 text-left text-xs bg-slate-950 p-3 rounded-xl border border-slate-800">
+                            <div>
+                                <span class="text-[10px] text-slate-500 block">Gear PC</span>
+                                <strong class="text-white text-[11px] block line-clamp-1">${techProduct.name}</strong>
+                            </div>
+                            <div>
+                                <span class="text-[10px] text-slate-500 block">Cupang Hias</span>
+                                <strong class="text-white text-[11px] block line-clamp-1">${cupangProduct.name}</strong>
+                            </div>
+                            <div>
+                                <span class="text-[10px] text-slate-500 block">Camilan</span>
+                                <strong class="text-white text-[11px] block line-clamp-1">${snackProduct.name}</strong>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-center gap-3 pt-2">
+                            <button onclick="addToCart(${techProduct.id}); addToCart(${cupangProduct.id}); addToCart(${snackProduct.id});" class="px-5 py-2.5 rounded-xl bg-amberGold-500 hover:bg-amberGold-400 text-slate-950 font-tech font-bold text-xs">
+                                Tambahkan Semua Ke Keranjang
+                            </button>
+                            <button onclick="quizIndex=0; renderQuiz();" class="px-4 py-2.5 rounded-xl bg-slate-800 text-slate-300 font-semibold text-xs border border-slate-700">
+                                Ulangi Kuis
+                            </button>
+                        </div>
+                    </div>
+                `;
+                lucide.createIcons();
+            }
+        }
+
+        // Filter Controls Event Listeners
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                filterBtns.forEach(b => {
+                    b.classList.remove('bg-cyber-cyan', 'text-slate-950');
+                    b.classList.add('bg-slate-900', 'text-slate-300', 'border', 'border-slate-800');
+                });
+
+                e.target.classList.remove('bg-slate-900', 'text-slate-300', 'border', 'border-slate-800');
+                e.target.classList.add('bg-cyber-cyan', 'text-slate-950');
+
+                currentCategory = e.target.getAttribute('data-category');
+                renderProducts();
+            });
+        });
+
+        searchInput.addEventListener('input', (e) => {
+            searchQuery = e.target.value;
+            renderProducts();
+        });
+
+        sortSelect.addEventListener('change', (e) => {
+            sortBy = e.target.value;
+            renderProducts();
+        });
+
+        cartToggleBtn.addEventListener('click', openCart);
+        closeCartBtn.addEventListener('click', closeCart);
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // Initialize App on Load
+        window.onload = function() {
+            lucide.createIcons();
+            renderProducts();
+            initBundleBuilder();
+            renderQuiz();
+        };
+    </script>
+</body>
+</html>
